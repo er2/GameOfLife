@@ -1,10 +1,10 @@
 class GameOfLife {
 
-   boolean[][] board = new boolean[5][5];
+   boolean[][] board = new boolean[3][3];
 
    void set(Setter setter) {
-      for (int i = 0; i < 5; i++) {
-         for (int j = 0; j < 5; j++) {
+      for (int i = 0; i < 3; i++) {
+         for (int j = 0; j < 3; j++) {
             board[i][j] = setter.set(i, j, board[i][j]);
          }
       }
@@ -79,11 +79,9 @@ class GameOfLife {
 
    public static void main(String[] args) {
       String[] board = {
-           "□ □ ■ □ □ ",
-           "□ □ ■ □ □ ",
-           "■ ■ ■ ■ ■ ",
-           "□ □ ■ □ □ ",
-           "□ □ ■ □ □ ",
+           "□ ■ □ ",
+           "□ ■ □ ",
+           "□ ■ □ ",
       };
       var parsed = parse(board);
       parsed.print();
