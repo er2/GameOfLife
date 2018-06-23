@@ -37,10 +37,6 @@ class GameOfLife {
            Math.abs(j - lj));
    }
 
-   void toggle(int i, int j) {
-      board[i][j] = !board[i][j];
-   }
-
    GameOfLife makeNextGeneration() {
       var n = new GameOfLife();
       n.set((i, j, s) -> {
