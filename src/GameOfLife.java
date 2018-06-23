@@ -1,10 +1,10 @@
 class GameOfLife {
 
-   boolean[][] board = new boolean[8][8];
+   boolean[][] board = new boolean[5][5];
 
    void set(Setter setter) {
-      for (int i = 0; i < 8; i++) {
-         for (int j = 0; j < 8; j++) {
+      for (int i = 0; i < 5; i++) {
+         for (int j = 0; j < 5; j++) {
             board[i][j] = setter.set(i, j, board[i][j]);
          }
       }
@@ -63,14 +63,30 @@ class GameOfLife {
       });
    }
 
-   @FunctionalInterface
    interface Setter {
       boolean set(int i, int j, boolean state);
    }
 
-   @FunctionalInterface
    interface Getter {
       void get(int i, int j, boolean state);
+   }
+
+   static GameOfLife parse(String[] board) {
+      var b = new GameOfLife();
+      b.set((i, j, s) -> board[i].charAt(j * 2) == '■');
+      return b;
+   }
+
+   public static void main(String[] args) {
+      String[] board = {
+           "□ □ ■ □ □ ",
+           "□ □ ■ □ □ ",
+           "■ ■ ■ ■ ■ ",
+           "□ □ ■ □ □ ",
+           "□ □ ■ □ □ ",
+      };
+      var parsed = parse(board);
+      parsed.print();
    }
 
 }
