@@ -2,6 +2,12 @@ class GameOfLife {
 
    boolean[][] board = new boolean[3][3];
 
+   GameOfLife() {}
+
+   GameOfLife(String[] board) {
+      set((i, j, s) -> board[i].charAt(j * 2) == '■');
+   }
+
    void set(Setter setter) {
       for (int i = 0; i < 3; i++) {
          for (int j = 0; j < 3; j++) {
@@ -67,22 +73,16 @@ class GameOfLife {
       void get(int i, int j, boolean state);
    }
 
-   static GameOfLife parse(String[] board) {
-      var b = new GameOfLife();
-      b.set((i, j, s) -> board[i].charAt(j * 2) == '■');
-      return b;
-   }
-
    public static void main(String[] args) {
       String[] board = {
            "□ ■ □ ",
            "□ ■ □ ",
            "□ ■ □ ",
       };
-      var parsed = parse(board);
-      parsed.print();
+      var gol = new GameOfLife(board);
+      gol.print();
       System.out.println("\n\n");
-      parsed.makeNextGeneration().print();
+      gol.makeNextGeneration().print();
    }
 
 }
