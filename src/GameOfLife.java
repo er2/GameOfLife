@@ -87,6 +87,8 @@ class GameOfLife {
       };
       var parsed = parse(board);
       parsed.print();
+      System.out.println("\n\n");
+      parsed.makeNextGeneration().print();
    }
 
 }
