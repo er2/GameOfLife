@@ -19,20 +19,22 @@ class GameOfLife {
 
    int countNeighbors(int i, int j) {
       var counter = new Getter() {
-         int sum;
+         int count;
 
          @Override
          public void get(int li, int lj, boolean state) {
             if (distance(i, j, li, lj) == 1 && board[li][lj])
-               sum++;
+               count++;
          }
       };
       get(counter);
-      return counter.sum;
+      return counter.count;
    }
 
    int distance(int i, int j, int li, int lj) {
-      return Math.max(Math.abs(i - li), Math.abs(j - lj));
+      return Math.max(
+           Math.abs(i - li),
+           Math.abs(j - lj));
    }
 
    void toggle(int i, int j) {
@@ -40,9 +42,9 @@ class GameOfLife {
    }
 
    GameOfLife makeNextGeneration() {
-      GameOfLife n = new GameOfLife();
+      var n = new GameOfLife();
       n.set((i, j, s) -> {
-         boolean alive = board[i][j];
+         var alive = board[i][j];
          int c = countNeighbors(i, j);
          if (alive) {
             return c == 2 || c == 3;
