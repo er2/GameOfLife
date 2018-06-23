@@ -81,7 +81,10 @@ class GameOfLife {
       };
       var gol = new GameOfLife(board);
       gol.print();
-      System.out.println("\n\n");
+      System.out.println("\n");
+      gol = gol.makeNextGeneration();
+      gol.print();
+      System.out.println("\n");
       gol.makeNextGeneration().print();
    }
 
