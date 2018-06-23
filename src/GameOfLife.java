@@ -1,3 +1,5 @@
+import static java.util.List.of;
+
 class GameOfLife {
 
    boolean[][] board = new boolean[3][3];
@@ -80,12 +82,11 @@ class GameOfLife {
            "□ ■ □ ",
       };
       var gol = new GameOfLife(board);
-      gol.print();
-      System.out.println("\n");
-      gol = gol.makeNextGeneration();
-      gol.print();
-      System.out.println("\n");
-      gol.makeNextGeneration().print();
+      for (var generation : of(0, 1, 2)) {
+         gol.print();
+         System.out.println("\n");
+         gol = gol.makeNextGeneration();
+      }
    }
 
 }
